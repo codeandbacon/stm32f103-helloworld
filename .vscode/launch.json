@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cortex-debug",
+            "request": "launch",
+            "device": "STM32F4103",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/target/thumbv7em-none-eabihf/debug/stm32f103-helloworld",
+            "servertype": "openocd",
+            "configFiles": ["interface/stlink-v2.cfg", "target/stm32f1x.cfg"],
+            "serverpath": "/usr/bin/openocd",
+            "svdFile": "STM32F103.svd",
+            "runToMain": true,
+            "preLaunchTask": "build",
+            "preLaunchCommands": [
+                "set mem inaccessible-by-default off",
+                "enable breakpoint",
+                "monitor reset"
+            ],
+            "armToolchainPath": "${env:HOME}/arm/bin"
+        }
+    ]
+}
